@@ -1,0 +1,22 @@
+{
+  "name": "mcgol",
+  "version": "1.0.0",
+  "description": "game of life",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js"
+  },
+  "keywords": [],
+  "author": "ar",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.5"
+  }
+}
