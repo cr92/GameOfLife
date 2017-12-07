@@ -8,6 +8,7 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const path = require('path');
+const game = require('./utils/game');
 
 const app = express();
 
@@ -22,19 +23,13 @@ var io = socketio(http_server);
 
 io.on('connection', function () {
     io.emit('grid', {
-        grid: [
-            [1, 0],
-            [0, 0]
-        ]
+        grid: game.init()
     });
 });
 
 setInterval(function () {
     io.emit('grid', {
-        grid: [
-            [1, 0],
-            [0, 0]
-        ]
+        grid: game.run()
     });
 }, process.env.REFRESH_INTERVAL);
 
