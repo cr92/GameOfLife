@@ -18,8 +18,10 @@ socket.on('grid', function (new_grid) {
 function renderPixel(x, y, state) {
     context.beginPath();
     context.rect(x * pixel_size, y * pixel_size, pixel_size, pixel_size);
-    context.fillStyle = state == 1 ? 'black' : 'white';
+    context.fillStyle = state == 1 ? 'red' : 'white';
     context.fill();
+    context.strokeStyle = 'black';
+    context.stroke();
 }
 
 function renderGrid(grid_data) {
