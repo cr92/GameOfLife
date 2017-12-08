@@ -22,16 +22,16 @@ const http_server = http.createServer(app);
 var io = socketio(http_server);
 
 io.on('connection', function () {
-    io.emit('grid', {
-        grid: game.init()
-    });
+    game.init()
+        .then((data) => {
+            console.log('init:', data);
+            setInterval(function () {
+                io.emit('grid', {
+                    grid: game.run()
+                });
+            }, process.env.REFRESH_INTERVAL);
+        })
 });
-
-setInterval(function () {
-    io.emit('grid', {
-        grid: game.run()
-    });
-}, process.env.REFRESH_INTERVAL);
 
 http_server.listen(PORT, () => {
     console.log(`@ ${HOST}:${PORT}`);
